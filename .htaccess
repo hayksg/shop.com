@@ -1,3 +1,4 @@
+Options All -Indexes
 AddDefaultCharset utf-8
 RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !^favicon\.ico
