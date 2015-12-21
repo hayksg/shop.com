@@ -11,7 +11,7 @@ class DB
         try {
             $db = new PDO($dsn, $params['user'], $params['password']);
             if ($db) {
-                $db->exec('set names utf-8');
+                $db->exec("SET NAMES 'utf8'");
                 return $db;
             }
         } catch (PDOException $e) {

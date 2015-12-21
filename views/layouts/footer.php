@@ -19,5 +19,6 @@
 <script src="/template/js/price-range.js"></script>
 <script src="/template/js/jquery.prettyPhoto.js"></script>
 <script src="/template/js/main.js"></script>
+<script src="/template/js/my-script.js"></script>
 </body>
 </html>

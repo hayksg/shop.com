@@ -8,11 +8,8 @@ error_reporting(E_ALL);
 
 // 2. Подключение системных файлов
 define('ROOT', dirname(__FILE__));
-require_once(ROOT . '/components/Router.php');
+require_once(ROOT . '/components/autoload.php');
 
-// 3. Установка соединения с БД
-require_once(ROOT . '/components/DB.php');
-
-// 4. Вызов Router
+// 3. Вызов Router
 $router = new Router;
 echo $router->run();

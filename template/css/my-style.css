@@ -1,4 +1,70 @@
+i{
+    font-style: normal;
+}
+
+.my-orange-color{
+    color: #fe980f;
+}
+
+.my-grey-color{
+    color: #696763 !important;
+}
+
+.my-red-color{
+    color: #d00;
+}
+
+.my-title-no-goods{
+    margin: 50px 0 0;
+}
+
 .my-category-link:hover
 {
     color: #fe980f !important;
+}
+
+.my-btn{
+    margin-left: 0;
+    -webkit-transition: background 300ms, color 300ms;
+    transition: background 300ms, color 300ms;
+}
+
+.my-product-price, .my-product-price + i, .my-product-amount, .my-product-amount + i{
+    color: #fe980f;
+    font-size: 20px;
+    font-weight:bold;
+}
+
+.my-pagination{
+    margin: 30px 0;
+    text-align: center;
+}
+
+.my-form :focus::-moz-placeholder{
+    color: transparent;
+}
+
+.my-form :focus::-webkit-input-placeholder{
+    color: transparent;
+}
+
+.my-form ::-moz-placeholder{
+    font-weight: normal;
+    color: #555;
+}
+
+.my-form ::-webkit-input-placeholder{
+    font-weight: normal;
+    color: #555;
+}
+
+.my-form textarea{
+    padding: 0.7em;
+    height: 250px;
+    margin: 0 0 10px;
+}
+
+.my-ul{
+    padding: 0;
+    margin: 0 0 20px;
 }
