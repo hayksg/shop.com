@@ -26,7 +26,11 @@
                 <div class="col-sm-9 padding-right">
                     <h2 class="title text-center">Контакты</h2>
                     <div class="row">
-                        <div class="col-sm-8 col-sm-offset-2">
+                        <div class="col-lg-8 col-lg-offset-2
+                                    col-md-10 col-md-offset-1
+                                    col-sm-10 col-sm-offset-1
+                                    col-xs-10 col-xs-offset-1
+                        ">
                             <?php if ($result) : ?>
                             <h4 class="my-red-color text-center">Сообщение отправлено!</h4>
                             <?php else : ?>
@@ -39,7 +43,7 @@
                                     <?php endforeach; ?>
                                 </ul>
                                 <?php endif; ?>
-                                <form action="#" method="post" class="my-form">
+                                <form action="/contacts/" method="post" class="my-form">
                                     <input type="email" name="email" placeholder="/Email">
                                     <input type="text" name="subject" placeholder="/Тема">
                                     <textarea name="message" placeholder="/Сообщение" required></textarea>

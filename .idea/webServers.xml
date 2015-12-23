@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="5d23478c-786d-4040-9bf9-b8136253e400" name="shopmag.ueuo.com" url="http://shopmag.ueuo.com">
-        <fileTransfer host="shopmag.ueuo.com" port="21" username="shopmag.ueuo.com">
+        <fileTransfer host="shopmag.ueuo.com" port="21" password="dfefdfcedfcddfcbdfd8df98df9adf9bdf9a" username="shopmag.ueuo.com">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>

@@ -34,7 +34,7 @@
                     <div class="contactinfo">
                         <ul class="nav nav-pills">
                             <li><a href="#"><i class="fa fa-phone"></i> +38 093 000 11 22</a></li>
-                            <li><a href="#"><i class="fa fa-envelope"></i> zinchenko.us@gmail.com</a></li>
+                            <li><a href="#"><i class="fa fa-envelope"></i> test@gmail.com</a></li>
                         </ul>
                     </div>
                 </div>
@@ -61,9 +61,19 @@
                 <div class="col-sm-8">
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i> Корзина</a></li>
-                            <li><a href="#"><i class="fa fa-user"></i> Аккаунт</a></li>
-                            <li><a href="#"><i class="fa fa-lock"></i> Вход</a></li>
+                            <li>
+                                <a href="/cart">
+                                    <i class="fa fa-shopping-cart"></i> Корзина
+                                    [ <i class="my-orange-color my-cart-products-count"><?= (int)Cart::countProductsInCart(); ?></i>]
+                                </a>
+                            </li>
+                            <?php if (User::isUser()) : ?>
+                            <li><a href="/cabinet"><i class="fa fa-user"></i> Аккаунт</a></li>
+                            <li><a href="/user/logout"><i class="fa fa-unlock"></i> Выход</a></li>
+                            <?php else : ?>
+                            <li><a href="/user/register"><i class="fa fa-user-plus"></i> Регистрация</a></li>
+                            <li><a href="/user/login"><i class="fa fa-lock"></i> Вход</a></li>
+                            <?php endif; ?>
                         </ul>
                     </div>
                 </div>

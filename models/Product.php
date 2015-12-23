@@ -127,4 +127,30 @@ class Product
             return $row['count'];
         }
     }
+
+    public static function getProductsInCart($idsArray)
+    {
+        if (is_array($idsArray) && !empty($idsArray)) {
+            $idsString = implode(',', $idsArray);
+
+            $db = DB::getConnection();
+            if ($db) {
+                $sql  = "SELECT id, name, price, code ";
+                $sql .= "FROM product ";
+                $sql .= "WHERE id ";
+                $sql .= "IN($idsString) ";
+                $sql .= "ORDER BY id ASC";
+
+                if (!$result = $db->query($sql)) {
+                    return false;
+                }
+
+                $products = array();
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                    $products[] = $row;
+                }
+                return $products;
+            }
+        }
+    }
 }

@@ -64,7 +64,37 @@ i{
     margin: 0 0 10px;
 }
 
+.my-form input[type="checkbox"]{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 10px 10px 0 0;
+}
+
+.my-form label{
+    display: inline-block;
+    margin: 0 0 20px;
+    cursor: pointer;
+    color: #696763;
+}
+
 .my-ul{
     padding: 0;
     margin: 0 0 20px;
+}
+
+.my-cabinet-ul a:hover{
+    text-decoration:underline;
+}
+
+.my-cart-table-box{
+    padding: 0 15px;
+}
+
+.my-title-h4{
+    margin-top: 20px;
+}
+
+h2.my-form-h2{
+    font-size: 17px;
 }
