@@ -32,6 +32,8 @@ class CartController
             $totalPrice = Cart::getTotalPrice($products);
         }
 
+        $message = FunctionLibrary::sessionMessage();
+
         require_once(ROOT . '/views/cart/index.php');
         return true;
     }
@@ -60,7 +62,7 @@ class CartController
             $errors = array();
 
             if (!User::checkName($name)) {
-                $errors[] = 'Тема должна быть больше 1 символа.';
+                $errors[] = 'Имя должно быть больше 1 символа.';
             }
 
             if (!User::checkPhone($phone)) {
@@ -71,8 +73,58 @@ class CartController
                 $errors[] = 'Сообщение не может быть пустым.';
             }
 
-            if (empty($errors)) {
+            $sessionProducts = Cart::returnSessionProducts();
+            if ($sessionProducts) {
+                $idsArray = array_keys($sessionProducts);
+                $products = Product::getProductsInCart($idsArray);
+                $totalPrice = Cart::getTotalPrice($products);
+                $totalCount = Cart::countProductsInCart();
 
+                if (User::isUser()) {
+                    $email = User::isLogged();
+                    $user = User::getUserByEmail($email);
+                    $userName = $user['name'];
+                    $userId = $user['id'];
+                } else {
+                    $userName = '';
+                    $userId = 0;
+                }
+            }
+
+            if (empty($errors)) {
+                $result = Order::save($name, $phone, $message, $userId, $sessionProducts);
+
+                if ($result) {
+                    $adminEmail = 'testxamppphp@gmail.com';
+                    $sub = "Новый заказ";
+                    $mess = "{$message}";
+                    mail($adminEmail, $sub, $mess);
+
+                    $_SESSION['message'] = 'Заказ оформлен';
+                    Cart::deleteProductsInCart();
+                    FunctionLibrary::redirectTo('/cart');
+                }
+            }
+        } else {
+            /* Выясняем есть ли товары в корзине */
+            $sessionProducts = Cart::returnSessionProducts();
+            if (!$sessionProducts) {
+                FunctionLibrary::redirectTo('/');
+            } else {
+                $idsArray = array_keys($sessionProducts);
+                $products = Product::getProductsInCart($idsArray);
+                $totalPrice = Cart::getTotalPrice($products);
+                $totalCount = Cart::countProductsInCart();
+            }
+
+            /* Выясняем зарегистрирован ли покупатель */
+
+            if (User::isUser()) {
+                $email = User::isLogged();
+                $user = User::getUserByEmail($email);
+                $userName = $user['name'];
+            } else {
+                $userName = '';
             }
         }
 

@@ -75,4 +75,11 @@ class Cart
             FunctionLibrary::redirectTo('/cart');
         }
     }
+
+    public static function deleteProductsInCart()
+    {
+        if (isset($_SESSION['products'])) {
+            unset($_SESSION['products']);
+        }
+    }
 }

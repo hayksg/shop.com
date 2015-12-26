@@ -36,8 +36,8 @@
                                 <?php else : ?>
                                     <div class="signup-form">
                                         <div>
-                                            <div>Всего товаров: <strong></strong></div>
-                                            <div>На сумму: <strong></strong></div>
+                                            <div>Всего товаров: <strong class="my-orange-color"><?= (int)$totalCount; ?></strong> шт.</div>
+                                            <div>На сумму: <strong class="my-orange-color"><?= (float)$totalPrice; ?></strong> US $</div>
                                         </div>
                                         <h2 class="my-form-h2">Для оформления заказа заполните пожалуйста форму</h2>
                                         <?php if (!empty($errors)) : ?>
@@ -47,8 +47,8 @@
                                                 <?php endforeach; ?>
                                             </ul>
                                         <?php endif; ?>
-                                        <form action="/cart/order" method="post" class="my-form">
-                                            <input type="text" name="name" placeholder="/Имя">
+                                        <form action="#" method="post" class="my-form">
+                                            <input type="text" name="name" value="<?= htmlentities($userName); ?>" placeholder="/Имя">
                                             <input type="text" name="phone" placeholder="/Телефон">
                                             <textarea name="message" placeholder="/Комментарий к заказу" required></textarea>
                                             <button name="submit" class="btn btn-default my-btn">Заказать</button>

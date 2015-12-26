@@ -97,4 +97,15 @@ class FunctionLibrary
 
         return $decrypted;
     }
+
+    public static function sessionMessage()
+    {
+        if (isset($_SESSION['message'])) {
+            $message = htmlentities($_SESSION['message']);
+            unset($_SESSION['message']);
+            return $message;
+        } else {
+            return false;
+        }
+    }
 }

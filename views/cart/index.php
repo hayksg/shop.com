@@ -29,7 +29,9 @@
                         <div class="col-sm-12">
                             <div class="my-cart-table-box">
                                 <?php if (empty($products)) : ?>
-                                    <h4 class="my-grey-color my-title-h4">Корзина пуста</h4>
+                                    <h4 class="my-grey-color my-title-h4">
+                                        <?php echo ($message) ? $message : 'Корзина пуста'; ?>
+                                    </h4>
                                 <?php else : ?>
                                 <div class="table-responsive">
                                     <table class="table table-hover table-striped table-bordered">

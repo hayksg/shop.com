@@ -10,6 +10,8 @@ class SiteController
         $products = Product::getProductsList(6, 0);
         if (!$products) {$products = array();}
 
+        $recomendedProducts = Product::getRecomemdedProducts();
+
         require_once(ROOT . '/views/site/index.php');
         return true;
     }

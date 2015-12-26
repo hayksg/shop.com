@@ -34,6 +34,26 @@ class Product
         }
     }
 
+    public static function getAllProducts()
+    {
+        $db = DB::getConnection();
+        if ($db) {
+            $sql  = "SELECT id, name, price, image, code ";
+            $sql .= "FROM product ";
+            $sql .= "ORDER BY id ASC";
+
+            if (!$result = $db->query($sql)) {
+                return false;
+            }
+
+            $products = array();
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                $products[] = $row;
+            }
+            return $products;
+        }
+    }
+
     public static function getProductsByCategoryId($categoryId, $page)
     {
         $categoryId = intval($categoryId);
@@ -63,7 +83,7 @@ class Product
         }
     }
 
-    public static function getProductById($id)
+    public static function getProductById($id, $status = true)
     {
         $id = intval($id);
         if ($id) {
@@ -71,8 +91,10 @@ class Product
             if ($db) {
                 $sql  = "SELECT * ";
                 $sql .= "FROM product ";
-                $sql .= "WHERE status = 1 ";
-                $sql .= "AND id = :id ";
+                $sql .= "WHERE id = :id ";
+                if ($status) {
+                    $sql .= "AND status = 1 ";
+                }
                 $sql .= "LIMIT 1";
 
                 $stmt = $db->prepare($sql);
@@ -150,6 +172,45 @@ class Product
                     $products[] = $row;
                 }
                 return $products;
+            }
+        }
+    }
+
+    public static function getRecomemdedProducts()
+    {
+        $db = DB::getConnection();
+        if ($db) {
+            $sql  = "SELECT id, name, price, image, is_new ";
+            $sql .= "FROM product ";
+            $sql .= "WHERE status = 1 ";
+            $sql .= "AND is_recommended = 1 ";
+            $sql .= "ORDER BY id DESC";
+
+            if (!$result = $db->query($sql)) {
+                return false;
+            }
+
+            $products = array();
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                $products[] = $row;
+            }
+            return $products;
+        }
+    }
+
+    public static function deleteProduct($id)
+    {
+        $id = intval($id);
+        if ($id) {
+            $db = DB::getConnection();
+            if ($db) {
+                $sql  = "DELETE FROM product ";
+                $sql .= "WHERE id = :id ";
+                $sql .= "LIMIT 1";
+
+                $stmt = $db->prepare($sql);
+                $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+                return $stmt->execute();
             }
         }
     }

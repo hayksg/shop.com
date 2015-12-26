@@ -98,3 +98,20 @@ i{
 h2.my-form-h2{
     font-size: 17px;
 }
+
+.my-table-products tr th + th + th + th{
+    width: 150px;
+}
+
+.my-table-products tr th + th + th + th + th{
+    width: 100px;
+}
+
+.my-form-delete{
+    display: inline-block;
+    margin: 0 100px 0 0;
+}
+
+.my-table-admins tr th + th{
+    width: 74px;
+}
