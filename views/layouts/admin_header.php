@@ -14,6 +14,7 @@
     <link href="/template/css/main.css" rel="stylesheet">
     <link href="/template/css/responsive.css" rel="stylesheet">
     <link href="/template/css/my-style.css" rel="stylesheet">
+    <link href="/template/css/jquery-filestyle.min.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="/template/js/html5shiv.js"></script>
     <script src="/template/js/respond.min.js"></script>

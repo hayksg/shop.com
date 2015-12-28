@@ -20,5 +20,6 @@
 <script src="/template/js/jquery.cycle2.min.js"></script>
 <script src="/template/js/jquery.cycle2.carousel.min.js"></script>
 <script src="/template/js/my-script.js"></script>
+<script src="/template/js/jquery-filestyle.min.js"></script>
 </body>
 </html>

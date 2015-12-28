@@ -78,6 +78,14 @@ i{
     color: #696763;
 }
 
+.my-form option{
+    padding: 7px 12px;
+}
+
+select.form-control{
+    padding: 6px 8px;
+}
+
 .my-ul{
     padding: 0;
     margin: 0 0 20px;
@@ -114,4 +122,8 @@ h2.my-form-h2{
 
 .my-table-admins tr th + th{
     width: 74px;
+}
+
+.jfilestyle{
+    width: 100% !important;
 }

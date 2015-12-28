@@ -52,7 +52,7 @@
                                 <p><b>Производитель:</b> <?= htmlentities($product['brand']); ?></p>
                                 <br>
                                 <button type="button"
-                                        class="btn btn-fefault cart my-btn add-to-cart"
+                                        class="btn btn-default cart my-btn add-to-cart"
                                         data-id="<?= (int)$product['id']; ?>"
                                 >
                                     <i class="fa fa-shopping-cart"></i>

@@ -55,4 +55,8 @@ $(function(){
     var amount = price * count;
     $('.my-product-amount + i').html(amount);
 
+    ///////////////////////////////////////////////////////////////////////////
+
+    $(":file").jfilestyle({inputSize: "50%"});
+
 });

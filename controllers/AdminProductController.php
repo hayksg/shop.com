@@ -13,6 +13,8 @@ class AdminProductController extends AdminBase
 
     public function actionCreate()
     {
+        $categories = Category::getCategoryList(false);
+        if (!$categories) {$categories = array();}
 
         require_once(ROOT . '/views/admin_product/create.php');
         return true;
@@ -20,6 +22,7 @@ class AdminProductController extends AdminBase
 
     public function actionUpdate()
     {
+
 
         require_once(ROOT . '/views/admin_product/update.php');
         return true;
