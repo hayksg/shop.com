@@ -31,7 +31,7 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="/template<?= htmlentities($product['image']); ?>" alt="image">
+                                            <img src="/template<?= htmlentities($product['image']); ?>" alt="image"  class="my-image">
                                             <h2>$<?= (float)$product['price']; ?></h2>
                                             <p>
                                                 <a href="/product/<?= (int)$product['id']; ?>">

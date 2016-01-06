@@ -59,4 +59,16 @@ $(function(){
 
     $(":file").jfilestyle({inputSize: "50%"});
 
+    ///////////////////////////////////////////////////////////////////////////
+
+    var imageLength = $('.my-image').length;
+
+    for (var i = 0; i < imageLength; i++) {
+        if ($('.my-image').eq(i).height() < 230) {
+            $('.my-image').eq(i).attr('src', '/template/images/home/no-image.jpg');
+        }
+    }
+
+    ///////////////////////////////////////////////////////////////////////////
+
 });

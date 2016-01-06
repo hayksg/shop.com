@@ -38,7 +38,7 @@ class Product
     {
         $db = DB::getConnection();
         if ($db) {
-            $sql  = "SELECT id, name, price, image, code ";
+            $sql  = "SELECT * ";
             $sql .= "FROM product ";
             $sql .= "ORDER BY id ASC";
 
@@ -212,6 +212,102 @@ class Product
                 $stmt->bindParam(':id', $id, PDO::PARAM_INT);
                 return $stmt->execute();
             }
+        }
+    }
+
+    public static function addProductToBase($options)
+    {
+        if (is_array($options) && !empty($options)) {
+            $db = DB::getConnection();
+            if ($db) {
+                $sql  = "INSERT INTO product(";
+                $sql .= "name,
+                         category_id,
+                         code,
+                         price,
+                         availability,
+                         brand,
+                         description,
+                         is_new,
+                         is_recommended,
+                         status";
+                $sql .= ") VALUES(";
+                $sql .= "?, ?, ?, ?, ?, ?, ?, ?, ?, ?";
+                $sql .= ")";
+
+                $stmt = $db->prepare($sql);
+
+                $stmt->bindParam(1,  $options['name'],           PDO::PARAM_STR);
+                $stmt->bindParam(2,  $options['category_id'],    PDO::PARAM_INT);
+                $stmt->bindParam(3,  $options['code'],           PDO::PARAM_INT);
+                $stmt->bindParam(4,  $options['price'],          PDO::PARAM_STR);
+                $stmt->bindParam(5,  $options['availability'],   PDO::PARAM_INT);
+                $stmt->bindParam(6,  $options['brand'],          PDO::PARAM_STR);
+                $stmt->bindParam(7,  $options['description'],    PDO::PARAM_STR);
+                $stmt->bindParam(8,  $options['is_new'],         PDO::PARAM_STR);
+                $stmt->bindParam(9,  $options['is_recommended'], PDO::PARAM_STR);
+                $stmt->bindParam(10, $options['status'],         PDO::PARAM_STR);
+
+                return ($stmt->execute()) ? $db->lastInsertId(): 0;
+            }
+        }
+    }
+
+    public static function updateProductById($id, $options)
+    {
+        $id = intval($id);
+
+        if ($id) {
+            if (is_array($options) && !empty($options)) {
+                $db = DB::getConnection();
+                if ($db) {
+                    $sql  = "UPDATE product SET ";
+                    $sql .= "name = :name,
+                             category_id = :categoryId,
+                             code = :code,
+                             price = :price,
+                             availability = :availability,
+                             brand = :brand,
+                             description = :description,
+                             is_new = :isNew,
+                             is_recommended = :isRecommended,
+                             status = :status ";
+                    $sql .= "WHERE id = :id ";
+                    $sql .= "LIMIT 1";
+
+                    $stmt = $db->prepare($sql);
+
+                    $stmt->bindParam(':name',          $options['name'],           PDO::PARAM_STR);
+                    $stmt->bindParam(':categoryId',    $options['category_id'],    PDO::PARAM_INT);
+                    $stmt->bindParam(':code',          $options['code'],           PDO::PARAM_INT);
+                    $stmt->bindParam(':price',         $options['price'],          PDO::PARAM_STR);
+                    $stmt->bindParam(':availability',  $options['availability'],   PDO::PARAM_INT);
+                    $stmt->bindParam(':brand',         $options['brand'],          PDO::PARAM_STR);
+                    $stmt->bindParam(':description',   $options['description'],    PDO::PARAM_STR);
+                    $stmt->bindParam(':isNew',         $options['is_new'],         PDO::PARAM_STR);
+                    $stmt->bindParam(':isRecommended', $options['is_recommended'], PDO::PARAM_STR);
+                    $stmt->bindParam(':status',        $options['status'],         PDO::PARAM_STR);
+                    $stmt->bindParam(':id',            $id,                        PDO::PARAM_INT);
+
+                    return ($stmt->execute());
+                }
+            }
+        }
+    }
+
+    public static function putImageToDataBase($id, $imagePath)
+    {
+        $db = DB::getConnection();
+        if ($db) {
+            $sql  = "UPDATE product SET ";
+            $sql .= "image = :imagePath ";
+            $sql .= "WHERE id = :id ";
+            $sql .= "LIMIT 1";
+
+            $stmt = $db->prepare($sql);
+            $stmt->bindParam(':imagePath', $imagePath, PDO::PARAM_STR);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            return $stmt->execute();
         }
     }
 }

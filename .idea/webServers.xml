@@ -9,6 +9,13 @@
           </advancedOptions>
         </fileTransfer>
       </webServer>
+      <webServer id="92417713-35a8-40a0-a027-176ddc0ad5f8" name="shopmag.site88.net" url="http://31.170.160.73">
+        <fileTransfer host="31.170.160.73" port="21" password="dfefdfcedfcddfcbdfd8df98df9adf9bdf9a" username="a1825476">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

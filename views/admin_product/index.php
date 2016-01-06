@@ -24,6 +24,7 @@
                             <th>Название</th>
                             <th>Цена US $</th>
                             <th>Изображение</th>
+                            <th>Редактировать</th>
                             <th>Удалить</th>
                         </tr>
                         <?php foreach ($allProducts as $product) : ?>
@@ -34,6 +35,11 @@
                             <td><?= (float)$product['price']; ?></td>
                             <td>
                                 <img src="/template<?= htmlentities($product['image']); ?>" width="60" height="50">
+                            </td>
+                            <td>
+                                <a href="/admin/product/update/<?= (int)$product['id']; ?>">
+                                    <i class="fa fa-edit"></i>
+                                </a>
                             </td>
                             <td>
                                 <a href="/admin/product/delete/<?= (int)$product['id']; ?>">

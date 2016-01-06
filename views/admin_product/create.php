@@ -14,7 +14,7 @@
                 <br>
                 <div class="row">
                     <div class="col-lg-6 col-md-7 col-sm-9">
-                        <form action="#" type="post" enctype="multipart/form-data" class="my-form">
+                        <form action="#" method="post" enctype="multipart/form-data" class="my-form">
                             <div class="form-group">
                                 <input type="text" name="name" class="form-control" placeholder="Название товара">
                             </div>
@@ -69,10 +69,10 @@
                             </div>
                             <div class="form-group">
                                 <p>Загрузить изображение:</p>
-                                <input type="file" class="jfilestyle" data-inputSize="400px">
+                                <input type="file" name="image" class="jfilestyle" data-inputSize="400px">
                             </div>
                             <br>
-                            <button type="button" class="btn btn-default btn-info">
+                            <button type="submit" name="submit" class="btn btn-info">
                                 &nbsp;&nbsp;&nbsp;Добавить&nbsp;&nbsp;&nbsp;
                             </button>
                         </form>
